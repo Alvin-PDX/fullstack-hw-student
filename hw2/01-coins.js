@@ -10,14 +10,25 @@ const calculateChange = (input) => {
   if (input > 10) return 'Error: input cannot be larger than 10';
   dollars = input - (input % 1);
   input = input % 1;
-  quarters = ((input - (input % 0.25)) / 0.25);
+  quarters = (input - (input % 0.25)) / 0.25;
   input = input % 0.25;
-  dimes = ((input - (input % 0.10)) / 0.10);
-  input = input % 0.10;
-  nickels = ((input - (input % 0.05)) / 0.05);
-  pennies = Math.round((input % 0.05) * 100)
+  dimes = (input - (input % 0.1)) / 0.1;
+  input = input % 0.1;
+  nickels = (input - (input % 0.05)) / 0.05;
+  pennies = Math.round((input % 0.05) * 100);
 
-  return dollars + ' dollar(s), ' + quarters + ' quarter(s), ' + dimes + ' dime(s), ' + nickels + ' nickel(s), ' + pennies + ' pennies';
+  return (
+    dollars +
+    ' dollar(s), ' +
+    quarters +
+    ' quarter(s), ' +
+    dimes +
+    ' dime(s), ' +
+    nickels +
+    ' nickel(s), ' +
+    pennies +
+    ' pennies'
+  );
 };
 
 // Sample Test Cases
