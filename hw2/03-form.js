@@ -18,7 +18,7 @@ form.addEventListener('submit', (event) => {
   if (inputs['newsletter'].checked)
     console.log('Newsletter: Please register me for the newsletter.');
   else console.log('Newsletter: No thanks.');
-  //event.preventDefault();
+  event.preventDefault();
 });
 
 clear.addEventListener('click', (event) => {
