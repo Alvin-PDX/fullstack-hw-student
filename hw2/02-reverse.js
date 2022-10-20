@@ -20,7 +20,8 @@ button.addEventListener('click', () => {
   output.innerHTML = input.value;
   let num = input.value.toString();
   if (num.length != 8)
+    // throws this error if string isn't a number or isn't the right length
     output.innerHTML =
-      'Must be an 8-digit long number'; //throws this error if string isn't a number or isn't the right length
+      'Must be an 8-digit long number'; 
   else output.innerHTML = reverseNumber(num);
 });
