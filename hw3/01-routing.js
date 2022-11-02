@@ -28,7 +28,7 @@ const server = http.createServer((req, res) => {
     let result = '';
 
     routes.forEach(
-      (elem) => (result += `<li><a href="/${elem}">${elem}</a></li>`)
+      (elem) => (result += `<li><a href='/${elem}'>${elem}</a></li>`)
     );
 
     return result;
@@ -41,33 +41,41 @@ const server = http.createServer((req, res) => {
     res.write(`<h1>Exercise 01</h1>`);
     res.write(`<ul> ${routeResults} </ul>`);
     res.end();
-  }
-  else if (req.url === '/welcome') {
+  } else if (req.url === '/welcome') {
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.write('<h1>Welcome welcome welcome</h1>');
     res.end();
   } else if (req.url === '/redirect') {
-    res.writeHead(302, { 'Content-Type': 'text/html', 'Location': '/redirected'});
+    res.writeHead(302, {
+      'Content-Type': 'text/html',
+      Location: '/redirected',
+    });
     res.end();
   } else if (req.url === '/redirected') {
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.write('<h1>Epic redirect</h1>');
     res.end();
   } else if (req.url === '/cache') {
-    res.writeHead(200, { 'Content-Type': 'text/html', 'Cache-Control': 'max-age=86400'});
+    res.writeHead(200, {
+      'Content-Type': 'text/html',
+      'Cache-Control': 'max-age=86400',
+    });
     res.write('<h1>this resource was cached</h1>');
     res.end();
   } else if (req.url === '/cookie') {
-    res.writeHead(200, { 'Content-Type': 'text/plain', 'Set-Cookie': 'hello=world'});
-    res.write(`cookies... yummm`);
+    res.writeHead(200, {
+      'Content-Type': 'text/plain',
+      'Set-Cookie': 'hello=world',
+    });
+    res.write('cookies... yummm');
     res.end();
   } else if (req.url === '/check-cookies') {
-    res.writeHead(200, { 'Content-Type': 'text/plain'});
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
     if (req.headers.cookie) {
       let cook = req.headers.cookie.split(';');
       let helloCookieExists = false;
-      for(let i = 0; i < cook.length; i += 1) {
-        if (cook[i].indexOf('hello=') === 0) helloCookieExists = true;
+      for (let i = 0; i < cook.length; i += 1) {
+        if (cook[i].trim().indexOf('hello=') === 0) helloCookieExists = true;
       }
       if (helloCookieExists === true) res.write('yes');
       else res.write('no');
