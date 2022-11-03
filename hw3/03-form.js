@@ -5,6 +5,7 @@ const port = process.env.PORT || 5001;
 
 // http://localhost:5001/submit should return all the data the user entered
 
+
 const server = http.createServer((req, res) => {
 
   if (req.url === '/form') {
@@ -51,8 +52,6 @@ const server = http.createServer((req, res) => {
     res.end();
   }
 });
-
-
 
 server.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
