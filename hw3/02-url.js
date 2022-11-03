@@ -29,9 +29,15 @@ const server = http.createServer((req, res) => {
     res.write(`<h1>Exercise 02</h1>`);
 
     res.write(`<ul> ${routeResults} </ul>`);
+  } else {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write('<style>table, td {border: 1px solid;}</style>');
+    res.write('<table>');
+    for (const [key, value] of url.searchParams) {
+      res.write('<tr> <td>' + key + '</td> <td>' + value + '</td> </tr>');
+    }
+    res.write('</table>');
   }
-
-  // Add your code here
 
   res.end();
 });
