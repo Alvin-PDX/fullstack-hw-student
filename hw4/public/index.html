@@ -6,6 +6,26 @@
     <title>Form Exercise</title>
   </head>
   <body>
-    <!-- Add your code here -->
+    <form method="post" action="/submit">
+      <label for="username">Username (must be alphanumeric): </label>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        pattern="[a-zA-Z0-9]+"
+        required
+      />
+
+      <label for="email">Email: </label>
+      <input type="email" name="email" id="email" required />
+
+      <label for="comments">Comments: </label>
+      <input type="textarea" name="comments" id="comments" />
+
+      <label for="newsletter">Newsletter me baybee </label>
+      <input type="checkbox" name="newsletter" id="newsletter" />
+
+      <input type="submit" value="Submit" />
+    </form>
   </body>
 </html>
